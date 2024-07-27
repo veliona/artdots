@@ -1,2 +1,1 @@
-# artdots
-# artdots
+# Art Dots
