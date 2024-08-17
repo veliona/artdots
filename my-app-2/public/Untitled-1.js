@@ -8,8 +8,8 @@ export default function HomePage() {
                 <div className={styles.header}>
                     <Image
                         src='logo.svg'
-                        width={100}
-                        height={100}
+                        width={80}
+                        height={80}
                         alt="Logo Art Dots"
                         className={styles.logo}
                         />

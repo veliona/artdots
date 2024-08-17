@@ -98,9 +98,9 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-} */
+}
 
-/* @gmedia (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
