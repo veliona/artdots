@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+// import { useEmblaCarousel } from "embla-carousel/react";
+// import { useState, useEffect, useCallback } from "react";
 import style from './page.module.css';
 import PocketBase from 'pocketbase';
 import { Poppins } from "next/font/google";
@@ -12,16 +14,23 @@ export async function getArtworks() {
     await pb.admins.authWithPassword(process.env.POCKETBASE_EMAIL, process.env.POCKETBASE_PASSWORD);
     const data = await pb.collection('artworks').getFullList({
         sort: '-created',
+        cache: 'no-store',
     });
-    // const data = await pb.collection('artworks').getOne('kmazdtt0i8b9w06');
+
     return data.map((record) => {
-        const image = pb.files.getUrl(record, record.image, {'thumb': '100x250'});
-        //const url = pb.files.getUrl(data, data.image, {'thumb': '100x250'});
-        return {
-            ...record,
-            image,
+        console.log(record)
+        console.log(record.id, record.image)
+        if (record.image) {
+            const image = pb.files.getUrl(record, record.image, { 'thumb': '100x250' });
+            return {
+                ...record,
+                image,
             };
-    })
+        } else {
+            return record;
+        }
+    },
+    )
 }
 
 export async function getInitialProps() {
@@ -37,26 +46,78 @@ export async function getInitialProps() {
 
 export default async function Page() {
     const artworks = await getArtworks();
-    console.log(artworks);
+    {
+        artworks.map((artwork) => (
+            console.log(artwork.image)
+
+        ))
+    }
+
     return (
         <div>
             <ul className={`${poppins.className}`}>
                 {artworks.map((artwork) => (
-                    <li className={`${style.artwork} ${poppins.className}`} key={artwork.id}>
-                        <Link href={`${artwork.name_en}`}>{artwork.name_en}</Link>
+                    <li key={artwork.id} className={`${style.artwork} ${poppins.className}`}>
                         <Image
-                        src={artwork.imageUrl}
-                        width={50}
-                        height={50}
-                        alt="image"
+                            key={artwork.id}
+                            src={artwork.image}
+                            width={250}
+                            height={200}
+                            alt="image"
                         // className={style.logo}
                         />
-                        <Link href={`${artwork.person}`}><li>{artwork.person}</li></Link>
-                        <Link href={`${artwork.type}`}><li>{artwork.type}</li></Link>
-                        {artwork.inspired_by.map((inspired_by) => (
-                            <Link href={`${inspired_by}`}><li>{inspired_by}</li></Link>
-                        ))}
-                        <Link href={`${artwork.inspired_others}`}><li>{artwork.inspired_others}</li></Link>
+                        <li>
+                            <Link key={artwork.id}
+                                href={`${artwork.type}`}
+                                className={`${style.artwork__item} ${style.artwork__item__type}`}>
+                                {artwork.type}
+                            </Link>
+                        </li>
+                        <Link href={`${artwork.name_en}`}
+                            className={`${style.artwork__item} ${style.artwork__item__title}`}>
+                            <p>{artwork.name_en}</p>
+                        </Link>
+                        <Link key={artwork.id} href={`${artwork.person}`}
+                            className={`${style.artwork__item} ${style.artwork__item__person}`}>
+                            <p>Created by</p>
+                            <ul>
+                                <li>{artwork.person}</li>
+                            </ul>
+                        </Link>
+                        {artwork.inspired_by ? (
+                            <div className={`${style.artwork__item__inspired_by}`}>
+                                <p>Inspired by</p>
+                                <ul>
+                                    {artwork.inspired_by.map((inspired_by, index) => (
+                                        <li>
+                                            <Link key={index}
+                                                href={`${inspired_by}`}
+                                                className={`${style.artwork__item}`}>
+                                                {inspired_by}
+                                            </Link>
+                                            {index < artwork.inspired_by.length - 1 && ', '}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ) : null}
+                        {artwork.inspired_others ? (
+                            <div className={`${style.artwork__item__inspired_others}`}>
+                                <p>Inspired others</p>
+                                <ul>
+                                    {artwork.inspired_others.map((inspired_others, index) => (
+                                        <li>
+                                            <Link key={index}
+                                                href={`${inspired_others}`}
+                                                className={`${style.artwork__item}`}>
+                                                {inspired_others}
+                                            </Link>
+                                            {index < artwork.inspired_others.length - 1 && ', '}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ) : null}
                     </li>
                 ))}
             </ul>

@@ -32,15 +32,15 @@ export default async function Header() {
 
     return (
         <nav>
-             <div className={style.header}>
-                 <div className={style.header}>
-                     <Image
+            <div className={style.header}>
+                <div className={style.header}>
+                    <Image
                         src='logo-shadow.svg'
                         width={50}
                         height={50}
                         alt="Logo Art Dots"
                         className={style.logo}
-                        />
+                    />
                     <span className={`${style.name} ${ysabeau.className}`}>ARTDOTS</span>
                 </div>
                 <div className={`${style.signup} ${poppins.className}`}>
@@ -51,11 +51,13 @@ export default async function Header() {
             </div>
             <ul className={`${style.categories} ${poppins.className}`}>
                 {categories.map((category) => (
-                    <Link href={`${category.category}`}>
-                    <li key={category.id}>{category.category}</li>
-                    </Link>
+                    <li key={category.id}>
+                        <Link href={`${category.category}`}>
+                            {category.category}
+                        </Link>
+                    </li>
                 ))}
             </ul>
         </nav>
     );
-  }
+}
