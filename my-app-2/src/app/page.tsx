@@ -1,12 +1,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
+// import useEmblaCarousel from 'embla-carousel-react';
+// import Autoplay from 'embla-carousel-autoplay';
 // import { useEmblaCarousel } from "embla-carousel/react";
 // import { useState, useEffect, useCallback } from "react";
+// import useEmblaCarousel from 'embla-carousel-react';
 import style from './page.module.css';
 import PocketBase from 'pocketbase';
 import { Poppins } from "next/font/google";
 // const ysabeau = Ysabeau({ weight: '400', subsets: ['latin'] });
+
 const poppins = Poppins({ weight: '400', subsets: ['latin'] });
+
+// export function EmblaCarousel() {
+//     const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 1500 })])
+// }
 
 export async function getArtworks() {
     const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE_URL);
@@ -46,24 +54,28 @@ export async function getInitialProps() {
 
 export default async function Page() {
     const artworks = await getArtworks();
-    {
-        artworks.map((artwork) => (
-            console.log(artwork.image)
+    // {
+    //     artworks.map((artwork) => (
+    //         console.log(artwork.image)
 
-        ))
-    }
+    //     ))
+    // }
+
+    // const categories = [... new Set(artworks.map((artwork) => (artwork.type)))];
+    // console.log(categories)
 
     return (
-        <div>
-            <ul className={`${poppins.className}`}>
+        <div className={style.artwork__container}>
+            <ul className={`${style.artwork__container} ${poppins.className}`}>
                 {artworks.map((artwork) => (
                     <li key={artwork.id} className={`${style.artwork} ${poppins.className}`}>
                         <Image
                             key={artwork.id}
                             src={artwork.image}
-                            width={250}
-                            height={200}
+                            width={200}
+                            height={100}
                             alt="image"
+                            layout="responsive"
                         // className={style.logo}
                         />
                         <li>
