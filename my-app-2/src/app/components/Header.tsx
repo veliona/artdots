@@ -1,59 +1,51 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import style from './header.module.css';
-import PocketBase from 'pocketbase';
+import { getArtworks } from '../config';
 import { Ysabeau, Poppins } from "next/font/google";
 const ysabeau = Ysabeau({ weight: '400', subsets: ['latin'] });
 const poppins = Poppins({ weight: '400', subsets: ['latin'] });
 
-async function getCategories() {
-    const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE_URL);
-    pb.autoCancellation(false);
-    await pb.admins.authWithPassword(process.env.POCKETBASE_EMAIL, process.env.POCKETBASE_PASSWORD);
-    const data = await pb.collection('categories').getFullList({
-        sort: '-created',
-    });
-    return data;
-}
-
-export async function getStaticProps() {
-    const categories = await getCategories();
-
-    return {
-        props: {
-            categories,
-        },
-        revalidate: 10,
-    };
-}
-
 export default async function Header() {
-    const categories = await getCategories();
+    const artworks = await getArtworks();
+    const categories = artworks.map((artwork) => artwork.type)
+    const unique_categories = [...new Set(categories)]
 
     return (
         <nav>
             <div className={style.header}>
                 <div className={style.header}>
-                    <Image
-                        src='logo-shadow.svg'
-                        width={50}
-                        height={50}
-                        alt="Logo Art Dots"
-                        className={style.logo}
-                    />
-                    <span className={`${style.name} ${ysabeau.className}`}>ARTDOTS</span>
+                    <Link href="/">
+                        <Image
+                            src='logo-shadow.svg'
+                            width={50}
+                            height={50}
+                            alt="Logo Art Dots"
+                            className={style.logo}
+                        />
+                    </Link>
+                    <Link href="/">
+                        <span className={`${style.name} ${ysabeau.className}`}>ARTDOTS</span>
+                    </Link>
                 </div>
                 <div className={`${style.signup} ${poppins.className}`}>
                     <Link href="/signup" className={`${style.button}`}>
-                        <button type="button" className={style.button__text}>SIGN UP &rArr;</button>
+                        <button type="button" className={style.button__container}>
+                            <span className={style.button__text}>
+                                SIGN UP
+                            </span>
+                            <span className={style.button__arrow}>
+                                &rarr;
+                            </span>
+                        </button>
                     </Link>
                 </div>
             </div>
             <ul className={`${style.categories} ${poppins.className}`}>
-                {categories.map((category) => (
+                {unique_categories.map((category) => (
                     <li key={category.id}>
-                        <Link href={`${category.category}`}>
-                            {category.category}
+                        <Link href={`${category}`.toLowerCase()}>
+                            {category}
                         </Link>
                     </li>
                 ))}

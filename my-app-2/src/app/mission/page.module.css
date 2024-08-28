@@ -1,0 +1,24 @@
+.container {
+    /* display: flex;
+    flex-direction: row; */
+    text-align: justify;
+    text-justify: inter-word;
+    margin: 50px;
+    font-size: 1.5em;
+    list-style: none;
+}
+
+.section {
+    margin-bottom: 50px;
+}
+
+.title {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    font-style: oblique;
+}
+
+.container p {
+    margin: 0;
+}

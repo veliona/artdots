@@ -1,0 +1,133 @@
+.artwork__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.category__container {
+    width: 100%;
+    margin: 10px;
+}
+
+.category {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 2em;
+    margin-left: 20px;
+    font-style: oblique;
+}
+
+.category span {
+    transition: 0.1s ease-in;
+}
+    
+.category::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    transform: scaleX(0);
+    transform-origin: top left;
+    transition: transform 0.3s ease;
+}
+
+.artwork {
+    width: 15%;
+    height: 600px;
+    list-style: none;
+    border: 1px solid rgb(0, 0, 0);
+    display: table-cell;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.artwork__image__container {
+    width: 100%;
+}
+
+.artwork__image__container img {
+    object-fit: contain;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.artwork__text__container {
+    margin: 10px;
+}
+
+.artwork__item {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.artwork__item__type {
+    color: rgb(115, 115, 115);
+}
+
+.artwork__item__title {
+    font-size: 1.5em;
+}
+
+.artwork__item__title p {
+    margin: 0;
+}
+
+.artwork__item__person p {
+    margin-bottom: 5px;
+}
+
+.artwork__item__person ul {
+    list-style-type: none;
+    margin-bottom: 5px;
+    padding: 0px;
+    font-size: 0.8em;
+}
+
+.artwork__item__person li {
+    display: inline;
+    text-decoration: underline;
+}
+
+.artwork__item__inspired_by p {
+    margin-bottom: 5px;
+}
+
+.artwork__item__inspired_by ul {
+    list-style-type: none;
+    margin-bottom: 5px;
+    padding: 0px;
+    font-size: 0.8em;
+    display: inline;
+    list-style: none;
+}
+
+.artwork__item__inspired_by li {
+    display: inline;
+    text-decoration: underline;
+}
+
+.artwork__item__inspired_others p {
+    margin-bottom: 5px;
+}
+
+.artwork__item__inspired_others ul {
+    list-style-type: none;
+    margin-bottom: 5px;
+    padding: 0px;
+    font-size: 0.8em;
+}
+
+.artwork__item__inspired_others li {
+    display: inline;
+    text-decoration: underline;
+}
