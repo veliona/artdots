@@ -29,6 +29,7 @@ export default async function Header() {
                     </Link>
                 </div>
                 <div className={`${style.signup} ${poppins.className}`}>
+                    <div className={style.borded_animation}></div>
                     <Link href="/signup" className={`${style.button}`}>
                         <button type="button" className={style.button__container}>
                             <span className={style.button__text}>

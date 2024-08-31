@@ -1,9 +1,9 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import style from './footer.module.css';
-import PocketBase from 'pocketbase';
-import { Ysabeau, Poppins } from "next/font/google";
-const ysabeau = Ysabeau({ weight: '400', subsets: ['latin'] });
+import { ReactElement } from 'react';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Poppins } from "next/font/google";
 const poppins = Poppins({ weight: '400', subsets: ['latin'] });
 
 export default async function Footer() {
@@ -23,13 +23,16 @@ export default async function Footer() {
                     </li>
                     <li>
                         <Link href="/terms">
-                            Terms and Conditions
+                            Terms & Conditions
                         </Link>
                     </li>
                 </ul>
-                <ul className={style.icons}>
-                    <li>Twitter</li>
-                </ul>
+                {/* <ul className={style.icons}>
+                    <li>
+                        <FontAwesomeIcon icon={faTwitter} />
+                    </li>
+                </ul> */}
+                <p className={style.contact}>Contact: hello@artdots.co</p>
                 <p className={style.credits}>© 2024 Design & Development by Julia Jakubczak</p>
             </div>
         </footer>

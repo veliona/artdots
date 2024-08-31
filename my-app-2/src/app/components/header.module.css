@@ -30,15 +30,86 @@
 
 .signup {
   margin-right: 10px;
+  width: 120px;
+  height: 50px;
 }
+
+.borded_animation:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+  /* border width */
+	left: 5px;
+	top: 5px;
+  /* double the px from the border width left */
+	width: calc(100% - 10px);
+	height: calc(100% - 10px);
+  /*bg color*/
+	background: #292a2e;
+  /*box border radius*/
+	border-radius: 7px;
+}
+
+.borded_animation::before {
+    content: '';
+    /*z-index: -2;*/
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    position: absolute;
+    width: 99999px;
+    height: 99999px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    /*border color, change middle color*/
+    background-image: conic-gradient(rgba(0,0,0,0), #1976ed, rgba(0,0,0,0) 25%);
+    /* change speed here */
+    animation: rotate 4s linear infinite;
+   }
 
 .button {
     text-decoration: none;
 }
 
-/* .button:hover {
-  cursor: pointer;
-} */
+.button, .borded_animation {
+ max-height: 200px;
+ max-width: 250px;
+ width: 120px;
+ height: 50px;
+ /* position: relative; */
+ overflow: hidden; 
+ z-index: 0;
+ /* Border Radius */
+ border-radius: 10px;
+ position: absolute;
+ overflow: hidden; 
+}
+
+.borded_animation {
+ overflow: hidden;
+ /* Glow Blur */
+ /* filter: blur(3px); */
+}
+
+/* .button:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 120px;
+  height: 50px;
+  left: 5px;
+  top: 5px;
+  background: #292a2e;
+  border-radius: 7px;
+ }
+*/
+
+@keyframes rotate {
+ 100% {
+   transform: translate(-50%, -50%) rotate(1turn);
+ }
+}
 
 .button__container {
     display : flex;
@@ -49,7 +120,8 @@
     flex-direction : row;
     text-align: center;
     width: 120px;
-    margin-top: 3%;
+    height: 50px;
+    /* margin-top: 3%; */
     border: 1px solid rgb(0, 0, 0);
     color: rgb(0, 0, 0);
     background-color: white;
@@ -63,6 +135,9 @@
 .button__text {
 	overflow: hidden;
   margin-right: 5px;
+  width: max-content;
+  text-align: center;
+  margin: auto;
 }
 
 .button__text:hover {

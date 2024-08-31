@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import style from './artworks.module.css';
 import { getArtworks } from '../config';
-// import { getInitialProps } from '../config';
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({ weight: '400', subsets: ['latin'] });
@@ -10,9 +9,7 @@ const poppins = Poppins({ weight: '400', subsets: ['latin'] });
 export default async function Artwork() {
     const artworks = await getArtworks();
     const categories = artworks.map((artwork) => artwork.type)
-    // console.log(Array.isArray(categories));
     const unique_categories = [...new Set(categories)]
-
 
     return (
         <div>
@@ -35,7 +32,6 @@ export default async function Artwork() {
                                             height={100}
                                             alt="image"
                                             layout="responsive"
-                                        //  className={style.artwork__image}
                                         />
                                     </div>
                                     <div className={style.artwork__text__container}>
@@ -50,7 +46,8 @@ export default async function Artwork() {
                                             className={`${style.artwork__item} ${style.artwork__item__title}`}>
                                             <p>{artwork.name_en}</p>
                                         </Link>
-                                        <Link key={artwork.id} href={`${artwork.person}`}
+                                        <Link key={artwork.id}
+                                            href={`person/${artwork.person}`}
                                             className={`${style.artwork__item} ${style.artwork__item__person}`}>
                                             <p>Created by</p>
                                             <ul>
