@@ -6,10 +6,25 @@ import { Poppins } from "next/font/google";
 
 const poppins = Poppins({ weight: '400', subsets: ['latin'] });
 
-export default async function Artwork() {
+type SearchParams = {
+    category?: string;
+}
+
+type Props = {
+    searchParams?: SearchParams;
+}
+
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+export const revalidate = 0;
+
+export default async function Artwork({ searchParams }: Props) {
+    const selected_category = searchParams?.category || '';
     const artworks = await getArtworks();
     const categories = artworks.map((artwork) => artwork.type)
     const unique_categories = [...new Set(categories)]
+
+    console.log(unique_categories)
 
     return (
         <div>
@@ -22,7 +37,11 @@ export default async function Artwork() {
                             <span>&rarr;</span>
                         </Link>
                         <ul className={`${style.artwork__container} ${poppins.className}`}>
-                            {artworks.filter((artwork) => artwork.type === category).map((artwork) => (
+                            {artworks.filter((artwork) =>
+                                selected_category ?
+                                    artwork.type.toLowerCase() === selected_category.toLowerCase() :
+                                    artwork.type === category
+                            ).map((artwork) => (
                                 <li key={artwork.id} className={`${style.artwork} ${poppins.className}`}>
                                     <div className={style.artwork__image__container}>
                                         <Image

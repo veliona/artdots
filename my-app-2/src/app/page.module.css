@@ -1,11 +1,17 @@
 .introduction {
     font-size: 2em;
     text-align: center;
-    margin: 100px;
+    margin: 50px 100px 50px 100px;
 }
 
 .introduction p {
     margin: 0;
+}
+
+.animation {
+    fill: black;
+    display: flex;
+    justify-content: center;
 }
 
 .artwork__container {

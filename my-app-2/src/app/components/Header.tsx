@@ -1,15 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import style from './header.module.css';
-import { getArtworks } from '../config';
 import { Ysabeau, Poppins } from "next/font/google";
 const ysabeau = Ysabeau({ weight: '400', subsets: ['latin'] });
 const poppins = Poppins({ weight: '400', subsets: ['latin'] });
 
 export default async function Header() {
-    const artworks = await getArtworks();
-    const categories = artworks.map((artwork) => artwork.type)
-    const unique_categories = [...new Set(categories)]
 
     return (
         <nav>
@@ -42,15 +38,6 @@ export default async function Header() {
                     </Link>
                 </div>
             </div>
-            <ul className={`${style.categories} ${poppins.className}`}>
-                {unique_categories.map((category) => (
-                    <li key={category.id}>
-                        <Link href={`${category}`.toLowerCase()}>
-                            {category}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
         </nav>
     );
 }

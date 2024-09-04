@@ -1,9 +1,10 @@
-// import Image from 'next/image';
+import Image from 'next/image';
 // import Link from 'next/link';
 import style from './page.module.css';
 // import { getArtworks } from './config';
 import { Poppins } from "next/font/google";
 import Artworks from './components/Artworks';
+
 // import PocketBase from 'pocketbase';
 // const ysabeau = Ysabeau({ weight: '400', subsets: ['latin'] });
 // import useEmblaCarousel from 'embla-carousel-react';
@@ -11,6 +12,8 @@ import Artworks from './components/Artworks';
 // import { useEmblaCarousel } from "embla-carousel/react";
 // import { useState, useEffect, useCallback } from "react";
 // import useEmblaCarousel from 'embla-carousel-react';
+
+// import Animation from '../../public/animation.svg';
 
 const poppins = Poppins({ weight: '400', subsets: ['latin'] });
 
@@ -61,6 +64,12 @@ export default async function Page() {
 
     return (
         <div>
+            <Image
+                src='animation.svg'
+                width={500}
+                height={150}
+                alt='animation of dots connected with a line'
+                className={style.animation} />
             <div className={`${style.introduction} ${poppins.className}`}>
                 <p>Explore artworks and their creators.</p>
                 <p>Connect dots between inspirations.</p>
