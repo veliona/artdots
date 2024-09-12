@@ -66,7 +66,7 @@ export default async function Page() {
         <div>
             <Image
                 src='animation.svg'
-                width={500}
+                width={800}
                 height={150}
                 alt='animation of dots connected with a line'
                 className={style.animation} />

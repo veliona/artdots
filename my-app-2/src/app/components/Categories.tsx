@@ -2,19 +2,13 @@
 
 import Link from 'next/link';
 import style from './categories.module.css';
-// import { getArtworks } from '../config';
 import { Poppins } from "next/font/google";
-import { useSearchParams } from 'next/navigation'
 const poppins = Poppins({ weight: '400', subsets: ['latin'] });
 
 import { categoryFilters } from "../../../constant";
 
 export default function Categories() {
-    // const artworks = await getArtworks();
-    // const categories = artworks.map((artwork) => artwork.type)
-    // const unique_categories = [...new Set(categories)]
-
-    const unique_categories = categoryFilters
+    const unique_categories = categoryFilters;
 
     return (
         <div>
@@ -24,7 +18,7 @@ export default function Categories() {
                         <Link
                             href=
                             {{
-                                pathname: `${category}`.toLowerCase(),
+                                pathname: `/${category}`.toLowerCase(),
                                 query: { category: `${category}`.toLowerCase() },
                             }}
                             className={`${category}`.toLowerCase()}>

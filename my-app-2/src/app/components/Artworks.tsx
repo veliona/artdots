@@ -6,41 +6,43 @@ import { Poppins } from "next/font/google";
 
 const poppins = Poppins({ weight: '400', subsets: ['latin'] });
 
-type SearchParams = {
-    category?: string;
-}
+// type SearchParams = {
+//     category?: string;
+// }
 
-type Props = {
-    searchParams?: SearchParams;
-}
+// type Props = {
+//     searchParams?: SearchParams;
+// }
 
-export const dynamic = 'force-dynamic';
-export const dynamicParams = true;
-export const revalidate = 0;
+// export const dynamic = 'force-dynamic';
+// export const dynamicParams = true;
+// export const revalidate = 0;
 
-export default async function Artwork({ searchParams }: Props) {
-    const selected_category = searchParams?.category || '';
+export default async function Artworks(
+    // { searchParams }: Props
+) {
+    // const selected_category = searchParams?.category || '';
     const artworks = await getArtworks();
-    const categories = artworks.map((artwork) => artwork.type)
-    const unique_categories = [...new Set(categories)]
-
-    console.log(unique_categories)
+    const categories = artworks.map((artwork) => artwork.type);
+    const unique_categories = [...new Set(categories)];
 
     return (
         <div>
             <div className={style.artwork__container}>
                 {unique_categories.map((category) => (
                     <div className={style.category__container}>
-                        <Link href={`${category.toLowerCase()}`}
+                        <Link href=
+                            {{
+                                pathname: `${category}`.toLowerCase(),
+                                query: { category: `${category}`.toLowerCase() },
+                            }}
                             className={`${style.category} ${poppins.className}`}>
                             <span>{category}</span>
                             <span>&rarr;</span>
                         </Link>
                         <ul className={`${style.artwork__container} ${poppins.className}`}>
                             {artworks.filter((artwork) =>
-                                selected_category ?
-                                    artwork.type.toLowerCase() === selected_category.toLowerCase() :
-                                    artwork.type === category
+                                artwork.type === category
                             ).map((artwork) => (
                                 <li key={artwork.id} className={`${style.artwork} ${poppins.className}`}>
                                     <div className={style.artwork__image__container}>
@@ -61,12 +63,19 @@ export default async function Artwork({ searchParams }: Props) {
                                                 {artwork.type}
                                             </Link>
                                         </li>
-                                        <Link href={`${category.toLowerCase()}/${artwork.name_en}`}
+                                        <Link href={{
+                                            pathname: `${category.toLowerCase()}/${artwork.name_en}`,
+                                            // query: { category: `${category}`.toLowerCase() },
+                                        }}
                                             className={`${style.artwork__item} ${style.artwork__item__title}`}>
                                             <p>{artwork.name_en}</p>
                                         </Link>
                                         <Link key={artwork.id}
-                                            href={`person/${artwork.person}`}
+                                            href={{
+                                                pathname: `person/${artwork.person}`,
+                                                // query: { category: `${category}`.toLowerCase() },
+                                            }}
+
                                             className={`${style.artwork__item} ${style.artwork__item__person}`}>
                                             <p>Created by</p>
                                             <ul>
@@ -78,14 +87,15 @@ export default async function Artwork({ searchParams }: Props) {
                                                 <p>Inspired by</p>
                                                 <ul>
                                                     {artwork.inspired_by.map((inspired_by, index) => (
-                                                        <li>
+                                                        <p>{inspired_by.name}</p>
+                                                        /* <li>
                                                             <Link key={index}
-                                                                href={`${inspired_by}`}
+                                                                href={`${inspired_by.name}`}
                                                                 className={`${style.artwork__item}`}>
-                                                                {inspired_by}
+                                                                {inspired_by.name}
                                                             </Link>
                                                             {index < artwork.inspired_by.length - 1 && ', '}
-                                                        </li>
+                                                        </li> */
                                                     ))}
                                                 </ul>
                                             </div>
@@ -94,15 +104,19 @@ export default async function Artwork({ searchParams }: Props) {
                                             <div className={`${style.artwork__item__inspired_others}`}>
                                                 <p>Inspired others</p>
                                                 <ul>
-                                                    {artwork.inspired_others.map((inspired_others, index) => (
+                                                    {artwork.inspired_others.map((inspired_others_item, index) => (
                                                         <li>
-                                                            <Link key={index}
-                                                                href={`${inspired_others}`}
-                                                                className={`${style.artwork__item}`}>
-                                                                {inspired_others}
-                                                            </Link>
-                                                            {index < artwork.inspired_others.length - 1 && ', '}
+                                                            <p>test</p>
+                                                            <p>{inspired_others_item}</p>
                                                         </li>
+                                                        // <li>
+                                                        //     <Link key={index}
+                                                        //         href={`${inspired_others_item.name}`}
+                                                        //         className={`${style.artwork__item}`}>
+                                                        //         {inspired_others_item.name}
+                                                        //     </Link>
+                                                        //     {/* {index < artwork.inspired_others.length - 1 && ', '} */}
+                                                        // </li>
                                                     ))}
                                                 </ul>
                                             </div>
@@ -114,6 +128,6 @@ export default async function Artwork({ searchParams }: Props) {
                     </div>
                 ))}
             </div>
-        </div>
+        </div >
     )
 }
