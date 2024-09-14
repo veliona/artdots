@@ -1,0 +1,35 @@
+.categories {
+    border: 1px solid rgb(0, 0, 0);
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    list-style: none;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .categories li {
+    display: inline-block;
+    margin: 0px 15px 0px;
+  }
+  
+  .categories a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .categories a button {
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  
+  .literature:hover {
+    color: blue !important;
+    text-decoration: underline !important;
+  }
