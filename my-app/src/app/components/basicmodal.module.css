@@ -1,0 +1,42 @@
+.container {
+    display: flex; /* Use flex for layout */
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    position: fixed; /* Fixed position to enable z-index */
+    z-index: 10; /* Set z-index for stacking */
+    width: 50vw;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+    background-color: white;
+    margin-top: 20px;
+}
+
+.text_top {
+    font-size: 1.5em;
+}
+
+.button {
+    text-align: center;
+    width: 150px;
+    /* margin-top: 3%; */
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    background-color: white;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+    transition: 0.1s ease-in;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.text_button {
+    margin: 0;
+    font-size: 1.2em;
+    color: rgb(0, 0, 0);
+}
