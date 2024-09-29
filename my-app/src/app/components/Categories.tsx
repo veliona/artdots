@@ -3,9 +3,12 @@
 import Link from 'next/link';
 import style from './categories.module.css';
 import { Poppins } from "next/font/google";
+import { categoryFilters } from "../../../constant";
 const poppins = Poppins({ weight: '400', subsets: ['latin'] });
 
-import { categoryFilters } from "../../../constant";
+type SearchParams = {
+    category?: string;
+}
 
 export default function Categories() {
     const unique_categories = categoryFilters;
@@ -18,7 +21,7 @@ export default function Categories() {
                         <Link
                             href=
                             {{
-                                pathname: `/${category}`.toLowerCase(),
+                                pathname: '/category/',
                                 query: { category: `${category}`.toLowerCase() },
                             }}
                             className={`${category}`.toLowerCase()}>

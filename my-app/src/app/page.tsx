@@ -74,7 +74,7 @@ export default async function Page() {
                 <p>Explore artworks and their creators.</p>
                 <p>Connect dots between inspirations.</p>
             </div>
-            <Artworks />
+            {/* < Artworks /> */}
             {/* <div className={style.artwork__container}>
                 {unique_categories.map((category) => (
                     <div className={style.category__container}>

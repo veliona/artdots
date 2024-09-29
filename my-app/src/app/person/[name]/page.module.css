@@ -13,12 +13,23 @@
     grid-area: name;
     font-size: 2em;
     margin: 80px 80px 0px 0px;
+    align-self: end;
+    width: 90%;
 }
 
 .description {
     grid-area: description;
-    font-size: 1.5em;
+    display: inline;
+    list-style: none;
+    padding: 0;
+    font-size: 1.1em;
     color: rgb(115, 115, 115);
+    align-self: end;
+    width: 90%;
+}
+
+.description li {
+    display: inline;
 }
 
 .image {
@@ -56,10 +67,9 @@
     align-content: space-between;
     flex-direction: column;
     justify-content: center;
-    width: 30vw;
+    width: 20vw;
     display: inline-block;
     list-style: none;
-    display: table-cell;
     margin: 10px;
     border-radius: 10px;
     padding: 0px 0px 10px 0px;
@@ -71,6 +81,7 @@
     max-width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .artwork__type {

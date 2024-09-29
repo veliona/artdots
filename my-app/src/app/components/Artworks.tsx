@@ -14,9 +14,9 @@ const poppins = Poppins({ weight: '400', subsets: ['latin'] });
 //     searchParams?: SearchParams;
 // }
 
-// export const dynamic = 'force-dynamic';
-// export const dynamicParams = true;
-// export const revalidate = 0;
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+export const revalidate = 0;
 
 export default async function Artworks(
     // { searchParams }: Props
@@ -31,9 +31,11 @@ export default async function Artworks(
             <div className={style.artwork__container}>
                 {unique_categories.map((category) => (
                     <div className={style.category__container}>
-                        <Link href=
+                        <Link
+                            key={category}
+                            href=
                             {{
-                                pathname: `${category}`.toLowerCase(),
+                                pathname: `/${category}`.toLowerCase(),
                                 query: { category: `${category}`.toLowerCase() },
                             }}
                             className={`${style.category} ${poppins.className}`}>
@@ -60,7 +62,7 @@ export default async function Artworks(
                                             <Link key={artwork.id}
                                                 href=
                                                 {{
-                                                    pathname: `${artwork.type}`.toLowerCase(),
+                                                    pathname: `/${artwork.type}`.toLowerCase(),
                                                     query: { category: `${artwork.type}`.toLowerCase() },
                                                 }}
                                                 className={`${style.artwork__item} ${style.artwork__item__type}`}>
@@ -94,23 +96,21 @@ export default async function Artworks(
                                                 <p>Inspired by</p>
                                                 <ul>
                                                     {artwork.inspired_by.map((inspired_by_item, index) => (
-                                                        <div>
-                                                            <li>
-                                                                <Link key={index}
-                                                                    href=
-                                                                    {{
-                                                                        pathname: `/${inspired_by_item.type}/${inspired_by_item.name}`,
-                                                                        query: {
-                                                                            name: `${inspired_by_item.name}`,
-                                                                            type: `${inspired_by_item.type}`
-                                                                        }
-                                                                    }}
-                                                                    className={`${style.artwork__item}`}>
-                                                                    {inspired_by_item.name}
-                                                                </Link>
-                                                                {index < artwork.inspired_by.length - 1 && ', '}
-                                                            </li>
-                                                        </div>
+                                                        <li>
+                                                            <Link key={index}
+                                                                href=
+                                                                {{
+                                                                    pathname: `/${inspired_by_item.type}/${inspired_by_item.name}`,
+                                                                    query: {
+                                                                        name: `${inspired_by_item.name}`,
+                                                                        type: `${inspired_by_item.type}`
+                                                                    }
+                                                                }}
+                                                                className={`${style.artwork__item}`}>
+                                                                {inspired_by_item.name}
+                                                            </Link>
+                                                            {index < artwork.inspired_by.length - 1 && ', '}
+                                                        </li>
                                                     ))}
                                                 </ul>
                                             </div>
@@ -122,7 +122,8 @@ export default async function Artworks(
                                                     {artwork.inspired_others.map((inspired_others_item, index) => (
                                                         <li>
                                                             <Link key={index}
-                                                                href={{
+                                                                href=
+                                                                {{
                                                                     pathname: `/${inspired_others_item.type}/${inspired_others_item.name}`,
                                                                     query: {
                                                                         name: `${inspired_others_item.name}`,

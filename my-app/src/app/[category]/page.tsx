@@ -24,6 +24,77 @@ export default async function Category({ searchParams }: Props) {
 
     return (
         <div>
+            {selected_category == 'film' ? (
+                <div className={`${style.introduction} ${poppins.className}`}>
+                    <div>Film</div>
+                    <p>Movies touch our hearts, awaken our vision, and change the way we see things. They take us to other places. They open doors and minds. Movies are the memories of our lifetime. We need to keep them alive.</p>
+                    <p>Martin Scorsese</p>
+                </div>
+            ) :
+                selected_category == 'painting' ? (
+                    <div className={`${style.introduction} ${poppins.className}`}>
+                        <div>Painting</div>
+                        <p>Painting is just another way of keeping a diary.</p>
+                        <p>Pablo Picasso</p>
+                    </div>
+                ) :
+                    selected_category == 'performing arts' ? (
+                        <div className={`${style.introduction} ${poppins.className}`}>
+                            <div>Performing Arts</div>
+                            <p>All good performance pieces have some philosophical validity. That's the difference between mere theater and performance art.</p>
+                            <p>Jack Bowman</p>
+                        </div>
+                    ) :
+                        selected_category == 'architecture' ? (
+                            <div className={`${style.introduction} ${poppins.className}`}>
+                                <div>Architecture</div>
+                                <p>Architecture should speak of its time and place, but yearn for timelessness.</p>
+                                <p>Frank Gehry</p>
+                            </div>
+                        ) :
+                            selected_category == 'sculpture' ? (
+                                <div className={`${style.introduction} ${poppins.className}`}>
+                                    <div>Sculpture</div>
+                                    <p>Sculpture is an art of the open air. Daylight, sunlight, is necessary to it, and for me, its best setting and complement is nature.</p>
+                                    <p>Henry Moore</p>
+                                </div>
+                            ) :
+                                selected_category == 'crafts' ? (
+                                    <div className={`${style.introduction} ${poppins.className}`}>
+                                        <div>Crafts</div>
+                                        <p>The beauty of handmade is in the imperfections.</p>
+                                        <p>Anon</p>
+                                    </div>
+                                ) :
+                                    selected_category == 'music' ? (
+                                        <div className={`${style.introduction} ${poppins.className}`}>
+                                            <div>Music</div>
+                                            <p>Without music, life would be a mistake.</p>
+                                            <p>Friedrich Nietzsche</p>
+                                        </div>
+                                    ) :
+                                        selected_category == 'photography' ? (
+                                            <div className={`${style.introduction} ${poppins.className}`}>
+                                                <div>Photography</div>
+                                                <p>We are making photographs to understand what our lives mean to us.</p>
+                                                <p>Ralph Hattersley</p>
+                                            </div>
+                                        ) :
+                                            selected_category == 'installation' ? (
+                                                <div className={`${style.introduction} ${poppins.className}`}>
+                                                    <div>Installation</div>
+                                                    <p>The whole world is an art gallery when you're mindful. There are beautiful things everywhere and they're free.</p>
+                                                    <p>Charles Tart</p>
+                                                </div>
+                                            ) : selected_category == 'drawing' ? (
+                                                <div className={`${style.introduction} ${poppins.className}`}>
+                                                    <div>Drawing</div>
+                                                    <p>A drawing is simply a line going for a walk.</p>
+                                                    <p>Paul Klee</p>
+                                                </div>
+                                            ) :
+                                                (<div className={`${style.introduction} ${poppins.className}`}>Other</div>)
+            }
             <div className={style.artwork__container}>
                 <ul className={`${style.artwork__container} ${poppins.className}`}>
                     {artworks.filter((artwork) =>

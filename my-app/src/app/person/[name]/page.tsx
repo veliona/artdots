@@ -31,7 +31,14 @@ export default async function Person({ searchParams }: Props) {
             ).map((person) => (
                 <div className={style.person__container}>
                     <div className={`${style.name} ${poppins.className}`}>{person.name}</div>
-                    <div className={`${style.description} ${poppins.className}`}>{person.description}</div>
+                    <ul className={`${style.description} ${poppins.className}`}>
+                        {person.description.map((description_item, index) => (
+                            <li key={index}>
+                                {description_item}
+                                {index < person.description.length - 1 && ', '}
+                            </li>
+                        ))}
+                    </ul>
                     <div className={`${style.image} ${poppins.className}`}>
                         <Image
                             key={person.id}
@@ -46,13 +53,13 @@ export default async function Person({ searchParams }: Props) {
                 </div>
             ))}
             <div className={`${style.artwork_section} ${poppins.className}`}>
-                {artworks.filter((artwork) =>
-                    selected_person ?
-                        artwork.person === selected_person : null
-                ).map((artwork) => (
-                    <div className={`${style.work} ${poppins.className}`}>
-                        <p>WORK</p>
-                        <ul>
+                <div className={`${style.work} ${poppins.className}`}>
+                    <p>WORK</p>
+                    <ul>
+                        {artworks.filter((artwork) =>
+                            selected_person ?
+                                artwork.person === selected_person : null
+                        ).map((artwork) => (
                             <li>
                                 <Image
                                     key={artwork.id}
@@ -63,6 +70,7 @@ export default async function Person({ searchParams }: Props) {
                                     alt="image for work section"
                                     layout="responsive"
                                 />
+
                                 <Link key={artwork.id}
                                     href=
                                     {{
@@ -84,9 +92,9 @@ export default async function Person({ searchParams }: Props) {
                                     {artwork.name_en}
                                 </Link>
                             </li>
-                        </ul>
-                    </div>
-                ))}
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
     )
