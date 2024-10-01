@@ -9,6 +9,12 @@
   --back_color : #99ccff;
 } */
 
+.navigation {
+  position: sticky;
+  top: 0;
+  background: white;
+}
+
 .header {
   display: flex;
   align-items: center;

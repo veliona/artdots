@@ -8,7 +8,7 @@ const poppins = Poppins({ weight: '400', subsets: ['latin'] });
 export default async function Header() {
 
     return (
-        <nav>
+        <nav className={style.navigation}>
             <div className={style.header}>
                 <div className={style.header}>
                     <Link href="/">

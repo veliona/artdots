@@ -10,8 +10,31 @@ type SearchParams = {
     category?: string;
 }
 
-export default function Categories() {
+type Props = {
+    searchParams?: SearchParams;
+}
+
+export default function Categories({ searchParams }: Props) {
     const unique_categories = categoryFilters;
+    const selected_category = searchParams?.category || '';
+
+    const getCategoryClass = (category: string) => {
+        const classMap = {
+            'film': style['category-film'],
+            'painting': style['category-painting'],
+            'literature': style['category-literature'],
+            'performing arts': style['category-performing-arts'],
+            'architecture': style['category-architecture'],
+            'sculpture': style['category-sculpture'],
+            'crafts': style['category-crafts'],
+            'music': style['category-music'],
+            'photography': style['category-photography'],
+            'installation': style['category-installation'],
+            'drawing': style['category-drawing'],
+        };
+
+        return classMap[category.toLowerCase()] || '';
+    };
 
     return (
         <div>
@@ -24,8 +47,8 @@ export default function Categories() {
                                 pathname: '/category/',
                                 query: { category: `${category}`.toLowerCase() },
                             }}
-                            className={`${category}`.toLowerCase()}>
-                            <button className={`${style.category__button} ${poppins.className}`}>
+                        >
+                            <button className={`${style.category__button} ${poppins.className} ${getCategoryClass(category)}`}>
                                 {category}
                             </button>
                         </Link>

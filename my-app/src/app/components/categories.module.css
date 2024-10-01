@@ -28,8 +28,58 @@
     cursor: pointer;
     font-size: 15px;
   }
-  
-  .literature:hover {
-    color: blue !important;
-    text-decoration: underline !important;
+
+  .category-film:hover {
+    color: #1B6FDE;
+    font-weight: bold;
+  }
+
+  .category-painting:hover {
+    color: #F85A40;
+    font-weight: bold;
+  }
+
+  .category-literature:hover {
+    color: #6F60E1;
+    font-weight: bold;
+  }
+
+  .category-performing-arts:hover {
+    color: #F48924;
+    font-weight: bold;
+  }
+
+  .category-architecture:hover {
+    color: #E5338E;
+    font-weight: bold;
+  }
+
+  .category-sculpture:hover {
+    color: #30C39E;
+    font-weight: bold;
+  }
+
+  .category-crafts:hover {
+    color: #FFC845;
+    font-weight: bold;
+  }
+
+  .category-music:hover {
+    color: #9E6F42;
+    font-weight: bold;
+  }
+
+  .category-photography:hover {
+    color: #26A4DE;
+    font-weight: bold;
+  }
+
+  .category-installation:hover {
+    color: #E0B56A;
+    font-weight: bold;
+  }
+
+  .category-drawing:hover {
+    color: #0A8EA0;
+    font-weight: bold;
   }
