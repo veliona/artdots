@@ -7,6 +7,8 @@
     list-style: none;
     padding: 10px;
     text-align: center;
+    overflow: auto;
+    white-space: nowrap;
   }
   
   .categories li {

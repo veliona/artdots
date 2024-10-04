@@ -23,7 +23,7 @@ export default async function Category({ searchParams }: Props) {
     const artworks = await getArtworks();
 
     return (
-        <div>
+        <div className={style.wrapper}>
             {selected_category == 'film' ? (
                 <div className={`${style.introduction} ${poppins.className}`}>
                     <p style={{ color: '#1B6FDE' }}><span>Film</span></p>

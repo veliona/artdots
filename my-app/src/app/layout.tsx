@@ -1,5 +1,4 @@
-import Header from './components/Header';
-import Categories from './components/Categories';
+import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import "./globals.css";
 import type { Viewport } from 'next';
@@ -21,8 +20,7 @@ export default function Layout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header />
-        <Categories />
+        <Navigation />
         {children}
         <Footer />
       </body>

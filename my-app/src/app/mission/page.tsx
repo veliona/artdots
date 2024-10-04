@@ -10,7 +10,8 @@ export default async function Mission() {
         <div className={`${style.container} ${poppins.className}`}>
             <div className={style.section}>
                 <p className={style.title}>STORY</p>
-                <p>My childhood home was full of adoration for art - filled with poetry books, volumes on Impressionizm, and magazines about painting and drawing. I remember my mom sway with a smile to the tunes of Frank Sinatra and while watching Fred Astaire dance. These experiences shaped the foundation of my love and respect for art and creatives. Over the years, I have realized that discovering art through recommendations from artists I admire or people in my life brings me the most joy, rather than depending on algorithms.</p>
+                <p>My childhood home was full of adoration for art - filled with poetry books, volumes on Impressionizm, and magazines about painting and drawing. I remember my mom sway with a smile to the tunes of Frank Sinatra and while watching Fred Astaire dance. These experiences shaped the foundation of my love and respect for art and creatives.</p>
+                <p>Over the years, I have realized that discovering art through recommendations from artists I admire or people in my life, as well as through shared themes, brings me the most joy, rather than depending on algorithms.</p>
                 <p>The idea for this project first came to me when I was in high school, and it has stayed on my mind ever since.</p>
                 <p>I am grateful to see it come to life and be able to share it.</p>
             </div>
