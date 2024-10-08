@@ -20,6 +20,10 @@
     margin: 10px;
 }
 
+.category__container {
+    text-align: center;
+}
+
 .category {
     color: rgb(0, 0, 0);
     text-decoration: none;
@@ -27,11 +31,17 @@
     font-size: 2em;
     margin-left: 20px;
     font-style: oblique;
+    text-decoration: underline;
+    letter-spacing: 1px;
 }
 
-.category span {
-    transition: 0.1s ease-in;
+/* .category:nth-of-type(1) {
+    text-decoration-color: #1B6FDE;
 }
+
+.category:nth-of-type(2) {
+    text-decoration-color: #F85A40;
+} */
     
 .category::before {
     content: "";
@@ -48,6 +58,7 @@
 }
 
 .artwork {
+    text-align: left;
     width: 20vw;
     height: 600px;
     list-style: none;

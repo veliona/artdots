@@ -68,15 +68,29 @@ export default async function Page() {
 
     return (
         <div>
-            <Image
-                src='animation.svg'
-                width={800}
-                height={150}
-                alt='animation of dots connected with a line'
-                className={style.animation} />
-            <div className={`${style.introduction} ${poppins.className}`}>
-                <p>Explore artworks and their creators.</p>
-                <p>Connect dots between inspirations.</p>
+            <div className={style.container}>
+                <Image
+                    src='/bg.png'
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    alt='background dots'
+                    className={style.background}
+                />
+                <div className={style.overlay}>
+                    {/* <Image
+                        src='animation.svg'
+                        width={800}
+                        height={150}
+                        alt='animation of dots connected with a line'
+                        className={style.animation} /> */}
+                    <div className={`${style.introduction__container} ${poppins.className}`}>
+                        <span className={style.introduction}>
+                            <p>Explore artworks and their creators.</p>
+                            <p>Connect dots between inspirations.</p>
+                        </span>
+                    </div>
+                </div>
             </div>
             <Artworks />
             {/* <div className={style.artwork__container}>
@@ -161,6 +175,6 @@ export default async function Page() {
                     </div>
                 ))}
             </div> */}
-        </div>
+        </div >
     )
 }

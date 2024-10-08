@@ -18,13 +18,31 @@ export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 export const revalidate = 0;
 
+
 export default async function Artworks(
     // { searchParams }: Props
 ) {
     // // const selected_category = searchParams?.category || '';
     const artworks = await getArtworks();
-    const categories = artworks.map((artwork) => artwork.type);
-    const unique_categories = [...new Set(categories)];
+    // const categories = artworks.map((artwork) => artwork.type);
+    // const unique_categories = [...new Set(categories)];
+    const unique_categories = [...new Set(["Film", "Painting", "Literature", "Performing Arts", "Architecture", "Sculpture", "Crafts", "Music", "Photography", "Installation", "Drawing"])];
+    const getUnderlineColor = (category) => {
+        switch (category) {
+            case 'Film': return '#1B6FDE';
+            case 'Painting': return '#F85A40';
+            case 'Literature': return '#6F60E1';
+            case 'Performing Arts': return '#F48924';
+            case 'Architecture': return '#E5338E';
+            case 'Sculpture': return '#30C39E';
+            case 'Crafts': return '#FFC845';
+            case 'Music': return '#9E6F42';
+            case 'Photography': return '#26A4DE';
+            case 'Installation': return '#E0B56A';
+            case 'Drawing': return '#0A8EA0';
+            default: return 'black';
+        }
+    };
 
     return (
         <div>
@@ -38,9 +56,13 @@ export default async function Artworks(
                                 pathname: `/${category}`.toLowerCase(),
                                 query: { category: `${category}`.toLowerCase() },
                             }}
-                            className={`${style.category} ${poppins.className}`}>
+                            className={`${style.category} ${poppins.className}`}
+                            style={{
+                                textDecoration: 'underline',
+                                textDecorationColor: getUnderlineColor(category),
+                            }}
+                        >
                             <span>{category}</span>
-                            <span>&rarr;</span>
                         </Link>
                         <ul className={`${style.artwork__container} ${poppins.className}`}>
                             {artworks.filter((artwork) =>
