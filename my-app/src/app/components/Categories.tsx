@@ -48,7 +48,7 @@ export default function Categories({ searchParams }: Props) {
                                 query: { category: `${category}`.toLowerCase() },
                             }}
                         >
-                            <button className={`${style.category__button} ${poppins.className} ${getCategoryClass(category)}`}>
+                            <button className={`${style.category__button} ${poppins.className} ${getCategoryClass(category)} ${category === selected_category ? "active" : ""}`}>
                                 {category}
                             </button>
                         </Link>

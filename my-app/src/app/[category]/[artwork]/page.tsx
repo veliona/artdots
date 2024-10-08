@@ -55,7 +55,6 @@ export default async function Artwork({ searchParams }: Props) {
                         <div className={`${style.inspired_by} ${poppins.className}`}>
                             <p>
                                 <span>INSPIRED BY</span>
-                                <span>&rarr;</span>
                             </p>
                             <ul>
                                 {artwork.inspired_by.map((inspired_by_item, index) => (
@@ -107,7 +106,6 @@ export default async function Artwork({ searchParams }: Props) {
                         <div className={`${style.inspired_others} ${poppins.className}`}>
                             <p>
                                 <span>INSPIRED OTHERS</span>
-                                <span>&rarr;</span>
                             </p>
                             <ul>
                                 {artwork.inspired_others.map((inspired_others_item, index) => (

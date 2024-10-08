@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import "./globals.css";
@@ -7,6 +8,9 @@ export const metadata = {
   title: "Artdots",
   description: "Explore artworks and their creators. Connect dots between inspirations.",
   keywords: "",
+  icons: {
+    icon: '/favicon/favicon.ico',
+  },
 };
 
 export const viewport: Viewport = {

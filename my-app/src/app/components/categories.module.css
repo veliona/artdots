@@ -36,6 +36,11 @@
     font-weight: bold;
   }
 
+  .film:active {
+    color: #1B6FDE;
+    font-weight: bold;
+  }
+
   .category-painting:hover {
     color: #F85A40;
     font-weight: bold;

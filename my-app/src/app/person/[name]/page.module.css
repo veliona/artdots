@@ -5,14 +5,12 @@
     'description image';
     justify-content: center;
     padding: 0;
-    width: 100%;
     margin: 50px 100px 100px 0px;
 }
 
 .name {
     grid-area: name;
     font-size: 2em;
-    margin: 80px 80px 0px 0px;
     align-self: end;
     width: 90%;
 }
@@ -45,7 +43,7 @@
 }
 
 .artwork_section {
-    margin: 50px;
+    margin: 20px;
 }
 
 .work p {
@@ -76,12 +74,6 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-@media (max-width: 768px) {
-    .work li {
-        width: 80vw;
-    }
-  }
-
 .work li img {
     max-height: 100%;
     max-width: 100%;
@@ -104,4 +96,22 @@
     color: black;
     display: block;
     margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .person__container {
+        margin: 50px 20px 0px 20px
+    }
+
+    .name {
+        font-size: 1.8em;
+    }
+
+    .image {
+        width: 40vw;
+    }
+
+    .work li {
+        width: 80vw;
+    }
 }

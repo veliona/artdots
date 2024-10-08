@@ -1,3 +1,7 @@
+.html { 
+    height: 100%;
+}
+
 .introduction {
     font-size: 2em;
     text-align: center;
@@ -147,4 +151,15 @@
 .artwork__item__inspired_others li {
     display: inline;
     text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .introduction {
+        font-size: 1.2em;
+        margin: 0px 10px 50px 10px;
+    }
+
+    .animation {
+        width: 60vw;
+    }
 }

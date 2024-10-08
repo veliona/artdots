@@ -34,81 +34,8 @@
   height: 50px;
 }
 
-.borded_animation:after {
-	content: '';
-	position: absolute;
-	z-index: -1;
-  /* border width */
-	left: 5px;
-	top: 5px;
-  /* double the px from the border width left */
-	width: calc(100% - 10px);
-	height: calc(100% - 10px);
-  /*bg color*/
-	background: #292a2e;
-  /*box border radius*/
-	border-radius: 7px;
-}
-
-.borded_animation::before {
-    content: '';
-    /*z-index: -2;*/
-    text-align: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(0deg);
-    position: absolute;
-    width: 99999px;
-    height: 99999px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    /*border color, change middle color*/
-    background-image: conic-gradient(rgba(0,0,0,0), #1976ed, rgba(0,0,0,0) 25%);
-    /* change speed here */
-    animation: rotate 4s linear infinite;
-   }
-
 .button {
     text-decoration: none;
-}
-
-.button, .borded_animation {
- max-height: 200px;
- max-width: 250px;
- width: 120px;
- height: 50px;
- /* position: relative; */
- overflow: hidden; 
- z-index: 0;
- /* Border Radius */
- border-radius: 10px;
- position: absolute;
- overflow: hidden; 
-}
-
-.borded_animation {
- overflow: hidden;
- /* Glow Blur */
- /* filter: blur(3px); */
-}
-
-/* .button:after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  width: 120px;
-  height: 50px;
-  left: 5px;
-  top: 5px;
-  background: #292a2e;
-  border-radius: 7px;
- }
-*/
-
-@keyframes rotate {
- 100% {
-   transform: translate(-50%, -50%) rotate(1turn);
- }
 }
 
 .button__container {
@@ -128,8 +55,14 @@
     padding: 10px;
     border-radius: 10px;
     font-size: 15px;
-    /* transition: 0.3s all ease; */
-    transition: 0.1s ease-in;
+    transition: ease-out 0.8s;
+    -webkit-transition: ease-out 0.8s;
+    -moz-transition: ease-out 0.8s;
+}
+
+.button__container:hover {
+  box-shadow: inset 400px 0 0 0 black;
+  color: white;
 }
 
 .button__text {
@@ -154,7 +87,7 @@
 	transition: 0.2s;
 } */
 
-.button__text::after {
+/* .button__text::after {
 	content: "";
 	background-color: black;
 	position: absolute;
@@ -163,7 +96,7 @@
 	height: 2px;
 	width: 0;
 	transition: 0.2s;
-}
+} */
 
 /* .button__text:hover,
 .button__text:focus {
@@ -181,8 +114,8 @@
   transition: 0.1s ease-in;
 }
 
-.button__arrow:hover {
+/* .button__arrow:hover {
   transform: translateX(50%);
   cursor: pointer;
-}
+} */
 

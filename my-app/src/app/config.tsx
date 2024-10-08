@@ -6,12 +6,10 @@ export async function getArtworks() {
     await pb.admins.authWithPassword(process.env.POCKETBASE_EMAIL, process.env.POCKETBASE_PASSWORD);
     const data = await pb.collection('artworks').getFullList({
         sort: '-created',
-        cache: 'no-store',
+        // cache: 'no-store',
     });
 
     return data.map((record) => {
-        console.log(record)
-        console.log(record.id, record.image)
         if (record.image) {
             const image = pb.files.getUrl(record, record.image);
             return {

@@ -94,3 +94,13 @@
     list-style-type: none;
     padding: 0;
 }
+
+@media (max-width: 768px) {
+    .image {
+        width: 80%;
+    }
+
+    .inspired_by li, .inspired_others li {
+        width: 80vw;
+    }
+}

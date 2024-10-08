@@ -21,7 +21,7 @@ export const revalidate = 0;
 export default async function Artworks(
     // { searchParams }: Props
 ) {
-    // const selected_category = searchParams?.category || '';
+    // // const selected_category = searchParams?.category || '';
     const artworks = await getArtworks();
     const categories = artworks.map((artwork) => artwork.type);
     const unique_categories = [...new Set(categories)];

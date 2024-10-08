@@ -148,17 +148,34 @@
     text-decoration: underline;
 }
 
+/* .artwork__item__inspired_by {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8;
+    white-space: pre-wrap;
+} */
+
 .artwork__item__inspired_by p {
     margin-bottom: 5px;
 }
 
 .artwork__item__inspired_by ul {
-    list-style-type: none;
+    /* list-style-type: none; */
     margin-bottom: 5px;
     padding: 0px;
     font-size: 0.8em;
-    display: inline;
+    /* display: inline; */
     list-style: none;
+
+    display: block;
+    max-height: calc(0.8em * 15);
+    /* line-height: 1.2em; */
+    overflow: hidden;
+    /* text-overflow: ellipsis;
+    position: relative;
+    white-space: normal; */
 }
 
 .artwork__item__inspired_by li {

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 // import Link from 'next/link';
 import style from './page.module.css';
-// import { getArtworks } from './config';
+import { getArtworks } from './config';
 import { Poppins } from "next/font/google";
 import Artworks from './components/Artworks';
 
@@ -57,8 +57,12 @@ const poppins = Poppins({ weight: '400', subsets: ['latin'] });
 //     };
 // }
 
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+export const revalidate = 0;
+
 export default async function Page() {
-    // const artworks = await getArtworks();
+    const artworks = await getArtworks();
     // const categories = artworks.map((artwork) => artwork.type)
     // const unique_categories = [...new Set(categories)]
 
@@ -74,7 +78,7 @@ export default async function Page() {
                 <p>Explore artworks and their creators.</p>
                 <p>Connect dots between inspirations.</p>
             </div>
-            {/* < Artworks /> */}
+            <Artworks />
             {/* <div className={style.artwork__container}>
                 {unique_categories.map((category) => (
                     <div className={style.category__container}>
